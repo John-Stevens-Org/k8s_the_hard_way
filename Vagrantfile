@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/jammy64"
+  config.vm.box = "ubuntu/focal64"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -20,12 +20,15 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
-  config.vm.network "public_network"
-  config.vm.network "private_network", ip: "192.168.78.1", name: "hostonlynet0", adapter: 4  
+  config.vm.define "ubuntutemplate"
+  config.vm.hostname = "ubuntutemplate"
+
+  config.vm.network "private_network", ip: "192.168.78.2", adapter: 2
     
   config.vm.provider "virtualbox" do |vb|  
+    vb.name = "ubuntutemplate"
     vb.gui = true
     vb.memory = "2048"
-    vb.cpus = 2
+    vb.cpus = 1
   end
 end
