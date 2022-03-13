@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     template.vm.network "private_network", ip: "192.168.78.2", adapter: 2
 
     template.vm.provider "virtualbox" do |vb|  
-      #vb.name = "ubuntutemplate"
+      vb.name = "ubuntutemplate01"
       vb.gui = false
       vb.memory = "2048"
       vb.cpus = 1
@@ -33,4 +33,8 @@ Vagrant.configure("2") do |config|
 
     template.vm.provision "shell", inline: $provisioning_script
   end
+
+  #config.vm.define "controller-01" do |controler1|
+  #  controler1.customize ["modifyvm", :id, "--groups", "/K8S The Hard Way LAB"]
+  #end
 end
