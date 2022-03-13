@@ -44,4 +44,24 @@ Vagrant.configure("2") do |config|
     
     K8sProvisioner.setup controller01, "controller01", "controller01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.2", $provisioning_script
   end
+
+  config.vm.define "controller02" do |controller02|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup controller02, "controller02", "controller02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.3", $provisioning_script
+  end
+
+  config.vm.define "controller03" do |controller03|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup controller03, "controller03", "controller03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.4", $provisioning_script
+  end
 end
