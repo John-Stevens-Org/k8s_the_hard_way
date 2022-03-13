@@ -12,6 +12,11 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
+  config.vm.provider "virtualbox" do |vb|
+    # create a master VM before creating the linked clones
+    vb.linked_clone = true
+  end
+  
   config.vm.define "ubuntutemplate" do |template|
     template.vm.hostname = "ubuntutemplate"
     template.vm.box = "ubuntu/focal64"
