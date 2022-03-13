@@ -42,7 +42,7 @@ Vagrant.configure("2") do |config|
     sleep 2
     SCRIPT
     
-    K8sProvisioner.setup controller01, "controller01", "controller01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.2", $provisioning_script
+    K8sProvisioner.setup controller01, "controller01", "controller01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.201", $provisioning_script
   end
 
   config.vm.define "controller02" do |controller02|
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     sleep 2
     SCRIPT
     
-    K8sProvisioner.setup controller02, "controller02", "controller02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.3", $provisioning_script
+    K8sProvisioner.setup controller02, "controller02", "controller02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.202", $provisioning_script
   end
 
   config.vm.define "controller03" do |controller03|
@@ -62,6 +62,56 @@ Vagrant.configure("2") do |config|
     sleep 2
     SCRIPT
     
-    K8sProvisioner.setup controller03, "controller03", "controller03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.4", $provisioning_script
+    K8sProvisioner.setup controller03, "controller03", "controller03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.203", $provisioning_script
+  end
+
+  config.vm.define "worker01" do |worker01|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup worker01, "worker01", "worker01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.211", $provisioning_script
+  end
+
+  config.vm.define "worker02" do |worker02|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup worker02, "worker02", "worker02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.212", $provisioning_script
+  end
+
+  config.vm.define "worker03" do |worker03|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup worker03, "worker03", "worker03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.213", $provisioning_script
+  end
+
+  config.vm.define "lb01" do |lb01|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup lb01, "lb01", "lb01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.225", $provisioning_script
+  end
+
+  config.vm.define "lb02" do |lb02|
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get -y update
+    sudo apt-get -y upgrade
+    sleep 2
+    SCRIPT
+    
+    K8sProvisioner.setup lb02, "lb02", "lb02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.226", $provisioning_script
   end
 end
