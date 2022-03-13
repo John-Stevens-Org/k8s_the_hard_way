@@ -20,15 +20,24 @@ Vagrant.configure("2") do |config|
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
 
-  config.vm.define "ubuntutemplate"
-  config.vm.hostname = "ubuntutemplate"
+  config.vm.define "ubuntutemplate" do |template|
+    template.vm.hostname = "ubuntutemplate"
+    template.vm.box = "ubuntu/focal64"
 
-  config.vm.network "private_network", ip: "192.168.78.2", adapter: 2
-    
-  config.vm.provider "virtualbox" do |vb|  
-    vb.name = "ubuntutemplate"
-    vb.gui = true
-    vb.memory = "2048"
-    vb.cpus = 1
+    template.vm.network "private_network", ip: "192.168.78.2", adapter: 2
+
+    template.vm.provider "virtualbox" do |vb|  
+      #vb.name = "ubuntutemplate"
+      vb.gui = false
+      vb.memory = "2048"
+      vb.cpus = 1
+    end
+
+    $provisioning_script = <<-SCRIPT
+    sudo apt-get update
+    sudo apt-get upgrade
+    SCRIPT
+
+    template.vm.provision "shell", inline: $provisioning_script
   end
 end
