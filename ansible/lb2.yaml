@@ -1,0 +1,10 @@
+---
+
+- name: setup load balancer
+  hosts: all
+  vars:
+    ip_address: "192.168.78.226"
+    hostname: "lb-02"
+  roles:
+    - common
+    - lb
