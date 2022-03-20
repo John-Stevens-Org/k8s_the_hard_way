@@ -1,24 +1,4 @@
 ---
-  
-  - name: set hostname
-    ansible.builtin.hostname:
-      name: ' {{ hostname }}'
 
-  - name: stop systemctl networking
-    ansible.builtin.systemd:
-      state: stopped
-      name: networking
-  
-  - name: set network interfaces
-    ansible.builtin.template:
-      src: templates/network_interface.j2
-      dest: /etc/network/interfaces
-      owner: root
-      group: root
-      mode: '0600'
-  
-  - name: start systemctl networking
-    ansible.builtin.systemd:
-      state: started
-      name: networking
-  
+- name: echo
+  ansible.builtin.shell: echo "hello lb"

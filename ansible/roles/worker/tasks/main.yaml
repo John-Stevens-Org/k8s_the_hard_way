@@ -1,0 +1,4 @@
+---
+
+- name: echo
+  ansible.builtin.shell: echo "hello worker"
