@@ -5,7 +5,7 @@
   become: yes
   vars:
     ip_address: 192.168.78.201
-    hostname: controller-01
+    hostname: controller01
   roles:
     - common
     - controller

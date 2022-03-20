@@ -4,8 +4,8 @@
   hosts: all
   become: yes
   vars:
-    ip_address: "192.168.78.226"
-    hostname: "lb-02"
+    ip_address: 192.168.78.226
+    hostname: lb02
   roles:
     - common
     - lb
