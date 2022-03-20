@@ -4,3 +4,27 @@
     ansible.builtin.hostname:
       name: "{{ hostname }}"
   
+  - name: set iscsi initiator IQN
+    ansible.builtin.lineinfile:
+      path: /etc/iscsi/initiatorname.iscsi
+      insertafter: EOF
+      line: "InitiatorName=iqn.1993-08.org.debian:01:{{ hostname }}"
+  
+  - name: remove /etc/machine-id
+    ansible.builtin.file:
+      path: /etc/machine-id
+      state: absent
+
+  - name: remove /var/lib/dbus/machine-id
+    ansible.builtin.file:
+      path: /var/lib/dbus/machine-id
+      state: absent
+  
+  - name: generate new machine-id
+    ansible.builtin.command: systemd-machine-id-setup
+
+  - name: set hosts file
+    ansible.builtin.lineinfile:
+      dest: /etc/hosts
+      line: "{{ item }}"
+    loop: "{{ cluster_hosts }}"

@@ -1,6 +1,32 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#+--------------------------------+
+#|        Pod CIDR range          |
+#+---------------+----------------+
+#| worker-01     | 10.10.1.0/24   |
+#| worker-02     | 10.10.2.0/24   |
+#| worker-03     | 10.10.3.0/24   |
+#+---------------+----------------+
+#
+#+--------------------------------+
+#|       Service IP range         |
+#+---------------+----------------+
+#|       172.168.0.0/16           |
+#+---------------+----------------+
+#
+#+--------------------------------+
+#|       Cluster Service IP       |
+#+---------------+----------------+
+#|       172.168.0.1              |
+#+---------------+----------------+
+#
+#+--------------------------------+
+#|       DNS Service IP           |
+#+--------------------------------+
+#|       172.168.0.2              |
+#+--------------------------------+
+
 class K8sProvisioner
   def self.setup(virtual_machine, vm_name, hostname, group, cpus, memory, host_only_ip, playbook)
     virtual_machine.vm.hostname = hostname
@@ -29,12 +55,6 @@ end
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
-
   config.vm.provider "virtualbox" do |vb|
     # create a master VM before creating the linked clones
     vb.linked_clone = true
