@@ -2,6 +2,7 @@
 
 - name: setup load balancer
   hosts: all
+  become: yes
   vars:
     ip_address: "192.168.78.211"
     hostname: "worker-01"

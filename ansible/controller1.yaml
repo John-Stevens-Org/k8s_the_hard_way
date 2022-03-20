@@ -1,10 +1,11 @@
 ---
 
-- name: setup load balancer
+- name: setup load controller
   hosts: all
+  become: yes
   vars:
-    ip_address: "192.168.78.201"
-    hostname: "controller-01"
+    ip_address: 192.168.78.201
+    hostname: controller-01
   roles:
     - common
     - controller
