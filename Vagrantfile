@@ -61,34 +61,34 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.define "controller01" do |controller01|
-    K8sProvisioner.setup controller01, "controller01", "controller01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.201", "ansible/controller1.yaml"
+    K8sProvisioner.setup controller01, "controller01", "controller01", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.201", "ansible/controller1.yaml"
   end
 
   config.vm.define "controller02" do |controller02|
-    K8sProvisioner.setup controller02, "controller02", "controller02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.202", "ansible/controller2.yaml"
+    K8sProvisioner.setup controller02, "controller02", "controller02", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.202", "ansible/controller2.yaml"
   end
 
   config.vm.define "controller03" do |controller03|
-    K8sProvisioner.setup controller03, "controller03", "controller03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.203", "ansible/controller3.yaml"
+    K8sProvisioner.setup controller03, "controller03", "controller03", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.203", "ansible/controller3.yaml"
   end
 
   config.vm.define "worker01" do |worker01|
-    K8sProvisioner.setup worker01, "worker01", "worker01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.211", "ansible/worker1.yaml"
+    K8sProvisioner.setup worker01, "worker01", "worker01", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.211", "ansible/worker1.yaml"
   end
 
   config.vm.define "worker02" do |worker02|
-    K8sProvisioner.setup worker02, "worker02", "worker02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.212", "ansible/worker2.yaml"
+    K8sProvisioner.setup worker02, "worker02", "worker02", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.212", "ansible/worker2.yaml"
   end
 
   config.vm.define "worker03" do |worker03|
-    K8sProvisioner.setup worker03, "worker03", "worker03", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.213", "ansible/worker3.yaml"
+    K8sProvisioner.setup worker03, "worker03", "worker03", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.213", "ansible/worker3.yaml"
   end
 
   config.vm.define "lb01" do |lb01|
-    K8sProvisioner.setup lb01, "lb01", "lb01", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.225", "ansible/lb1.yaml"
+    K8sProvisioner.setup lb01, "lb01", "lb01", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.225", "ansible/lb1.yaml"
   end
 
   config.vm.define "lb02" do |lb02|
-    K8sProvisioner.setup lb02, "lb02", "lb02", "/K8S The Hard Way LAB", 1, 2048, "192.168.78.226", "ansible/lb2.yaml"
+    K8sProvisioner.setup lb02, "lb02", "lb02", "/K8S The Hard Way LAB", 2, 2048, "192.168.78.226", "ansible/lb2.yaml"
   end
 end
